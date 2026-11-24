@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Language Translator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>Translator</h1>
+            </div>
+            <button id="resetButton" class="reset-button" title="Reset the page">
+                <i class="fas fa-refresh"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Language Selection Modal -->
+        <div id="languageModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Select Target Language</h2>
+                    <p>Choose the language you want to type in</p>
+                </div>
+                <div class="language-grid">
+                    <div class="language-option" data-lang="hi" data-name="Hindi">
+                        <img src="assets/hindi_icon.png" alt="Hindi" class="language-icon">
+                        <span class="name">हिन्दी</span>
+                    </div>
+                    <div class="language-option" data-lang="kn" data-name="Kannada">
+                        <img src="assets/kannada_icon.png" alt="Kannada" class="language-icon">
+                        <span class="name">ಕನ್ನಡ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Language Detection Confirmation Modal -->
+        <div id="languageDetectionModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Language Detected</h2>
+                    <p>We detected the language with high confidence</p>
+                </div>
+                <div class="detection-info">
+                    <div class="detected-language">
+                        <img id="detectedLanguageIcon" src="" alt="Detected Language" class="language-icon">
+                        <span id="detectedLanguageName" class="language-name"></span>
+                    </div>
+                    <div class="confidence-info">
+                        <span class="confidence-label">Confidence: </span>
+                        <span class="confidence-value">100%</span>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button id="continueWithDetected" class="btn btn-primary">
+                        Continue
+                    </button>
+                    <button id="cancelDetection" class="btn btn-secondary">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Language Display -->
+        <div class="language-display">
+            <div class="current-language">
+                <span class="language-label">Current language :</span>
+                <span id="selectedLanguage" class="language-name">Select a language</span>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-section">
+            <div class="input-container">
+                <textarea 
+                    id="inputText" 
+                    placeholder="Type in English..."
+                    rows="18"
+                    disabled
+                ></textarea>
+            </div>
+        </div>
+
+        <!-- Output Area -->
+        <div class="output-section">
+            <div class="output-container">
+                <div id="outputText" class="output-text">
+                    Select a language to start typing...
+                </div>
+                <div class="output-actions">
+                    <button id="copyOutput" class="btn btn-minimal">
+                        Copy
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span id="statusText">Ready to translate</span>
+            <div class="loading-indicator" id="loadingIndicator" style="display: none;">
+                <i class="fas fa-spinner fa-spin"></i>
+            </div>
+        </div>
+
+        <!-- Settings Panel -->
+        <div class="settings-panel">
+            <div id="settingsContent" class="settings-content">
+                <div class="setting-item">
+                    <label for="translationMode">Mode:</label>
+                    <select id="translationMode">
+                        <option value="transliteration">Transliteration</option>
+                        <option value="translation">Translation</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="autoTranslate">Auto-translate:</label>
+                    <input type="checkbox" id="autoTranslate" checked>
+                </div>
+                <div class="setting-item">
+                    <label for="autoDetect">Auto-detect language:</label>
+                    <input type="checkbox" id="autoDetect" checked>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
